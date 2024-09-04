@@ -1,0 +1,385 @@
+body {
+    
+        
+      
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+
+.navbar {
+    display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #333;
+padding: 10px 20px;
+color: #fff;
+max-height: 70px;
+
+
+}
+
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+.navbar .logo img {
+
+width: 120px; /* Set the logo width */
+height: 120px; /* Set the logo height */
+margin-right: -18px;
+filter: invert(1);
+}
+.navbar .text {
+    font-size: 30px;
+    
+        font-family: "Protest Guerrilla", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      
+    
+    
+}
+.navbar .tabs {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+
+
+    font-family: "Nerko One", cursive;
+        font-weight: 400;
+        font-style: normal;
+      
+}
+.navbar .tabs a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 25px;
+}
+.navbar .tabs a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+#menu{
+    height: 35px;
+    width: 35px;
+    
+    filter: invert(1);
+}
+
+.navbar .dropdown {
+    position: relative;
+    display: inline-block;
+}
+.navbar .dropdown button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+.navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.navbar .dropdown-content a {
+
+    font-family: "Nerko One", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.navbar .dropdown-content a:hover {
+    background-color: #ddd;
+}
+.navbar .dropdown:hover .dropdown-content {
+    display: block;
+}
+.navbar .dropdown:hover button {
+    background-color: #575757;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar .tabs {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .navbar .tabs a {
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+    }
+    .navbar .dropdown {
+        width: 100%;
+    }
+    .navbar .dropdown button {
+        width: 100%;
+        text-align: left;
+    }
+    .navbar .dropdown-content {
+        min-width: 100%;
+    }
+}
+
+.savings-section {
+    padding: 20px;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.savings-section h2 {
+    margin: 0;
+    color: #ffeb3b;
+    background-color: #048b1f;
+}
+
+.savings {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+.savings-amount {
+    font-weight: bold;
+    color: #00796b;
+}
+
+.appliance-list {
+    background-color: white;
+    padding: 20px;
+}
+
+.appliance-list ul {
+
+
+    font-family: "Nerko One", cursive;
+        font-weight: 400;
+        font-style: normal;
+
+
+        font-size: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.appliance-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.appliance-list img {
+    margin-right: 10px;
+}
+
+
+
+.list:hover {
+background-color: rgb(146, 227, 254);
+}
+
+
+
+.textbox{
+    font-size: 18px;
+    width: 125px;
+    height: 34px;
+    border-radius: 3px
+}
+.textbox:hover{
+    background-color:rgb(105, 101, 101);
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+.cbcheck{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+.save-record-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.appliance-details {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.appliance-details label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.appliance-details select,
+.appliance-details input[type="checkbox"],
+.appliance-details textarea {
+    margin-top: 5px;
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.appliance-details textarea {
+    resize: vertical;
+}
+
+.saveco2 {
+   
+padding: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 3px;
+margin-right: 0px;
+position: absolute;
+right: 0;
+width: 120px;
+margin-right: 18px;
+border-radius: 3px;
+}
+
+.co2{
+    border: 2px solid black;
+    border-radius: 3px;
+    height: 35px;
+    width: 55px;
+}
+
+.co2:hover{
+    background-color:rgb(105, 101, 101);
+    color: rgb(0, 0, 0);
+    border: none;
+}
+.appliance-item {
+    padding: 10x;
+   
+    width: 55px;
+}
+
+.appliance {
+    display: flex;
+    flex-direction: column;
+    
+   
+    margin-left: 211px;
+    position: absolute;
+
+}
+
+
+.options::after {
+    content: "option selected";
+    flex-grow: 1;
+    position: absolute;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+select {
+    width: calc(100%-120px);
+}
+
+
+.labeloption {
+    margin-left: 20px;
+}
+
+
+
+
+
+
+.list {
+    height: 113px;
+}
+
+.icon {
+    
+width: 57px;
+height: 66px;
+
+}
+
+.Appliance_name {
+   
+    margin-left: 10px;
+}
+
+.appliance-row {
+    position: absolute;
+    margin-left: 250px;
+}
+
+
+
+/* .selectoption {
+    border: 2px solid violet;
+    margin-left: 50px;
+} */
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .appliance-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .appliance-item {
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+
+    .dynamic-fields {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .saveco2 textarea,
+    .dynamic-fields textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .save-record-btn {
+        width: 100%;
+    }
+}
