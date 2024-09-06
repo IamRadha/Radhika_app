@@ -37,11 +37,18 @@
             </div>
         </div>
     </div>
+    <form method= "post">
     <main>
         <section class="savings-section">
             <h2>Vehicle</h2>
             <div class="savings">
-                <p>Date: <span id="currentDate">My Savings</span></p>
+                <p>Date: <span id="currentDate"></span></p>
+
+                <input type="hidden" name="displayDate" id="hiddenDisplayDateInput">
+
+        <!-- Hidden input to hold the date in YYYY-MM-DD format -->
+        <input type="hidden" name="dbDate" id="hiddenDbDateInput">
+
                 <span class="savings-amount">Meta Count of CO2:<input type="text" name="metacnt" id="metacount" readonly></span>
             </div>
         </section>
@@ -171,12 +178,24 @@
 
         <button class="save-record-btn">Save Record</button>
     </main>
+</form>
 
     <script>
         const today = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const formattedDate = today.toLocaleDateString('en-US', options);
+
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
+        const day = String(today.getDate()).padStart(2, '0');
+        const formattedDbDate = `${year}-${month}-${day}`;
+
+
         document.getElementById('currentDate').textContent = formattedDate;
+
+        document.getElementById('hiddenDisplayDateInput').value = formattedDate;
+
+        document.getElementById('hiddenDbDateInput').value = formattedDbDate;
 
         function calculate(inputValue, resultFieldId) {
             const parsedValue = parseFloat(inputValue);
@@ -227,6 +246,113 @@
             document.getElementById('metacount').value = totalMetaCount.toFixed(2);
         }
     </script>
+
+    <?php
+
+// Database connection
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "global_login";
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Check if the form was submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Fetch form data
+    $metacount = isset($_POST['metacnt']) && !empty($_POST['metacnt']) ? floatval($_POST['metacnt']) : null;
+    $currentDate = isset($_POST['dbDate']) && !empty($_POST['dbDate']) ? $_POST['dbDate'] : null;
+
+    // Validate the data
+    if ($metacount === null || $currentDate === null) {
+        echo "Meta count or date not provided. No updates made.";
+        exit; // Stop script execution if inputs are missing
+    }
+
+    // Check if the record for the current date exists
+    $checkQuery = "SELECT vehicle_meta_count FROM vehicle WHERE Date = ?";
+    $stmt = $conn->prepare($checkQuery);
+    $stmt->bind_param("s", $currentDate);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        // Record exists, fetch the current meta count
+        $row = $result->fetch_assoc();
+        $existingMetaCount = floatval($row['vehicle_meta_count']);
+
+        // Add the new meta count to the existing one
+        $newMetaCount = $existingMetaCount + $metacount;
+
+        // Update the record with the new meta count
+        $updateQuery = " UPDATE vehicle SET vehicle_meta_count = ? WHERE Date = ?";
+        $updateStmt = $conn->prepare($updateQuery);
+        $updateStmt->bind_param("ds", $newMetaCount, $currentDate);
+
+        if ($updateStmt->execute()) {
+            echo "Data updated successfully.<br>";
+        } else {
+            die("Data not updated: " . $updateStmt->error);
+        }
+
+        $updateStmt->close();
+    } else {
+        // If the record doesn't exist, insert a new record
+        $insertQuery = "INSERT INTO vehicle (Date , vehicle_meta_count) VALUES (?, ?)";
+        $insertStmt = $conn->prepare($insertQuery);
+        $insertStmt->bind_param("sd", $currentDate, $metacount);
+
+        if ($insertStmt->execute()) {
+            echo "Data inserted successfully.<br>";
+        } else {
+            die("Data not inserted: " . $insertStmt->error);
+        }
+
+        $insertStmt->close();
+    }
+
+    $stmt->close();
+    
+    
+    // $slection = "SELECT vehicle_meta_count FROM vehicle WHERE Date = '2024-09-06'";
+    // $result = mysqli_query($conn, $slection);
+    
+    // if(mysqli_num_rows($result) > 0) {
+    //     $row = mysqli_fetch_assoc($result);
+    
+    //     // Use echo to print HTML content within the PHP block
+    //     echo "<table border='1'>
+    //             <tr>
+    //                 <th>Meta Count Vehicle</th>
+    //             </tr>
+    //             <tr>
+    //                 <td>" . $row['vehicle_meta_count'] . "</td>
+    //             </tr>
+    //           </table>";
+    // } else {
+    //     echo "Data is not selected...";
+    // }
+    
+
+    exit();
+}
+
+mysqli_close($conn);
+
+
+
+
+
+
+
+
+?>
+
+
+    
 </body>
 
 </html>
