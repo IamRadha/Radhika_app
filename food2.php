@@ -7,13 +7,10 @@
     <title>My GHG Savings</title>
     <link rel="stylesheet" href="pract.css">
 
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
-
-
-<link href="https://fonts.googleapis.com/css2?family=Nerko+One&family=Protest+Guerrilla&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&family=Protest+Guerrilla&display=swap" rel="stylesheet">
 
 </head>
 
@@ -21,9 +18,10 @@
     <header></header>
     <div class="navbar">
         <div class="logo">
-            <img src="logo1-Photoroom.png"  alt="Logo"></div>
-            <div class="text">Cool The Globe</div>
-        
+            <img src="logo1-Photoroom.png" alt="Logo">
+        </div>
+        <div class="text">Cool The Globe</div>
+
         <div class="tabs">
             <a href="#">Home</a>
             <a href="#">Promises</a>
@@ -31,7 +29,7 @@
             <a href="#">About</a>
         </div>
         <div class="dropdown">
-            <button><img id = "menu" src="menu.png"></button>
+            <button><img id="menu" src="menu.png"></button>
             <div class="dropdown-content">
                 <a href="#">Login</a>
                 <a href="#">Logout</a>
@@ -42,156 +40,122 @@
     
     <main>
         <section class="savings-section">
-            <h2>Appliances</h2>
+            <h2>Garbage Collection</h2>
             <div class="savings">
             <p>Date: <span id="currentDate"></span></p>
             <input type="hidden" id="hiddenDisplayDateInput">
             <input type="hidden" id="hiddenDbDateInput">
             <span>Meta Count of CO2: <input type="text" id="metacount" readonly></span>
-               </div>
+            </div>
         </section>
 
+        <section class="appliance-list">
+            <ul>
+                <li class="list">
+                    <div class="appliance-item">
+                        <img class="icon" src="fruit.png" alt="Fruit_icon">
+                    </div>
+                    <span class="Appliance_name">Fruits</span>
+                    <div class="appliance-row">
+                        <!-- Label and text input for working hours -->
+                        <label class="labeloption" for="workingHours">Select an option:</label>
+                            <input id="inputvalue1" class="textbox" type="text" name="workingHours" placeholder="Enter kg" oninput="calculate(this.value, 'result1')">
 
-        <main>
-            <section class="appliance-list">
-
-
-                <ul>
-
-                    <li class="list">
-                        <div class="appliance-item">
-                            <img class="icon" src="Fan_icon.png" alt="Fan_icon">
-                        </div>
-                        <span class="Appliance_name">Fan or AC</span>
-
-                        <!-- Container to hold all elements in a single row -->
-                        <div class="appliance-row">
-                            <!-- Label and text input for working hours -->
-                            <label class="labeloption" for="workingHours">Select an option:</label>
-                            <input id="inputvalue1" class="textbox" type="text" name="workingHours" placeholder="Enter hours" oninput="calculate(this.value, 'result1')">
+                            <!-- Checkbox for not used option -->
                             <input class="cbcheck" type="checkbox" name="notUsed" id="notUsed1" onclick="clearField('inputvalue1', 'result1')">
                             <label for="notUsed">Not Used</label>
-                        </div>
-
-                        <!-- Textarea for showing CO2 saving -->
-                        <div class="saveco2">
-                            <label for="saving">CO2 saved:</label>
-                            <input class="co2" name="saving" id="result1" readonly>
-                        </div>
-                    </li>
-                    <!-- Repeat the above block for other appliances, updating the alt text and name attributes as needed -->
+                    </div>
 
 
+                    <div class="saveco2">
+                        <label for="saving">CO2 emit(kg):</label>
+                        <input class="co2" name="saving" id="result1" readonly>
+                    </div>
 
+                    
+                </li>
 
+                <li class="list">
+                    <div class="appliance-item">
+                        <img class="icon" src="dairyProduct.png" alt="dairy_icon">
+                    </div>
+                    <span class="Appliance_name">Dairy Products</span>
+                    <div class="appliance-row">
+                        <!-- Label and text input for working hours -->
+                        <label class="labeloption" for="workingHours">Select an option:</label>
+                            <input id="inputvalue2" class="textbox" type="text" name="workingHours" placeholder="Enter kg" oninput="calculate(this.value, 'result2')">
 
+                            <!-- Checkbox for not used option -->
+                            <input class="cbcheck" type="checkbox" name="notUsed" id="notUsed2" onclick="clearField('inputvalue2', 'result2')">
+                            <label for="notUsed">Not Used</label>
+                    </div>
+                    <div class="saveco2">
+                        <label for="saving">CO2 emit(kg):</label>
+                        <input class="co2" name="saving" id="result2" readonly>
+                    </div>
+                </li>
 
+                
 
-                    <li class="list">
+                <li class="list">
                         <div class="appliance-item">
-                            <img class="icon" src="Refrigerator_icon.png" alt="Refrigerator_icon">
+                            <img class="icon" src="nonveg.png" alt="nonveg_icon">
                         </div>
-                        <span class="Appliance_name">Refrigerator</span>
+                        <span class="Appliance_name">Non-Veg</span>
 
                         <!-- Container to hold all elements in a single row -->
                         <div class="appliance-row">
                             <!-- Label and text input for working hours -->
                             <label class="labeloption" for="workingHours">Select an option:</label>
-                            <input id="inputvalue2" class="textbox" type="text" name="workingHours" placeholder="Enter hours" oninput="calculate(this.value, 'result2')">
-                        <input class="cbcheck" type="checkbox" name="notUsed" id="notUsed2" onclick="clearField('inputvalue2', 'result2')">
+                            <input class = "textbox" id="inputvalue3"type="text" name="workingHours" placeholder="Enter kg"  oninput="calculate(this.value, 'result3')">
+
+                            <!-- Checkbox for not used option -->
+                            <input  class="cbcheck" type="checkbox" name="notUsed" id="notUsed3"  onclick="clearField('inputvalue3', 'result3')">
                             <label for="notUsed">Not Used</label>
                         </div>
 
                         <!-- Textarea for showing CO2 saving -->
                         <div class="saveco2">
-                            <label for="saving">CO2 saved:</label>
-                            <input class="co2" name="saving" id="result2" readonly>
-                                                </div>
-                    </li>
-
-
-                    <li class="list">
-                        <div class="appliance-item">
-                            <img class="icon" src="TV_icon.png" alt="TV_icon">
-                        </div>
-                        <span class="Appliance_name">Television</span>
-
-                        <!-- Container to hold all elements in a single row -->
-                        <div class="appliance-row">
-                            <!-- Label and text input for working hours -->
-                            <label class="labeloption" for="workingHours">Select an option:</label>
-                            <input class = "textbox" id="inputvalue3"type="text" name="workingHours" placeholder="Enter hours"  oninput="calculate(this.value, 'result3')">
-
-<!-- Checkbox for not used option -->
-<input  class="cbcheck" type="checkbox" name="notUsed" id="notUsed3"  onclick="clearField('inputvalue3', 'result3')">
-                            <label for="notUsed">Not Used</label>
-                        </div>
-
-                        <!-- Textarea for showing CO2 saving -->
-                        <div class="saveco2">
-                            <label for="saving">CO2 saved:</label>
+                            <label for="saving">CO2 emit(kg):</label>
                             <input class="co2" name="saving" rows="2" cols="15" id="result3" readonly>
                         </div>
                     </li>
 
 
+
+
                     <li class="list">
                         <div class="appliance-item">
-                            <img class="icon" src="WashMachine_icon.png" alt="washing_icon">
+                            <img class="icon" src="processedfood.png" alt="processedfood_icon">
                         </div>
-                        <span class="Appliance_name">Washing Machine</span>
+                        <span class="Appliance_name">Processed Food</span>
 
                         <!-- Container to hold all elements in a single row -->
                         <div class="appliance-row">
                             <!-- Label and text input for working hours -->
                             <label class="labeloption" for="workingHours">Select an option:</label>
-                            <input   class = "textbox" id="inputvalue4" type="text" name="workingHours" placeholder="Enter hours" oninput="calculate(this.value, 'result4')">
+                            <input   class = "textbox" id="inputvalue4" type="text" name="workingHours" placeholder="Enter kg" oninput="calculate(this.value, 'result4')">
 
-<!-- Checkbox for not used option -->
-<input  class="cbcheck" type="checkbox" name="notUsed" id="notUsed4"  onclick="clearField('inputvalue4', 'result4')">
+                            <!-- Checkbox for not used option -->
+                            <input  class="cbcheck" type="checkbox" name="notUsed" id="notUsed4"  onclick="clearField('inputvalue4', 'result4')">
                             <label for="notUsed">Not Used</label>
                         </div>
 
                         <!-- Textarea for showing CO2 saving -->
                         <div class="saveco2">
-                            <label for="saving">CO2 saved:</label>
+                            <label for="saving">CO2 emit(kg):</label>
                             <input class="co2" name="saving" rows="2" cols="15" id="result4" readonly>
+
                         </div>
-                    </li>
+</li>
 
-
-                    <li class="list">
-                        <div class="appliance-item">
-                            <img class="icon" src="other_icon.png" alt="other_icon">
-                        </div>
-                        <span class="Appliance_name">Other appliances</span>
-
-                        <!-- Container to hold all elements in a single row -->
-                        <div class="appliance-row">
-                            <!-- Label and text input for working hours -->
-                            <label class="labeloption" for="workingHours">Select an option:</label>
-                            <input  id="inputvalue5" class = "textbox" type="text" name="workingHours" placeholder="Enter hours"   oninput="calculate(this.value, 'result5')">
-
-<!-- Checkbox for not used option -->
-<input class="cbcheck" type="checkbox" name="notUsed" id="notUsed5" onclick="clearField('inputvalue5', 'result5')">
-                            <label for="notUsed">Not Used</label>
-                        </div>
-
-                        <!-- Textarea for showing CO2 saving -->
-                        <div class="saveco2">
-                            <label for="saving">CO2 saved:</label>
-                            <input class="co2" name="saving" rows="2" cols="15" id="result5" readonly>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-            <input type="button" value="Save Record" class="save-record-btn" onclick="submitData()">
-
-        </main>
-<script>
-     // Function to handle the form submission without a form tag
-     function submitData() {
+            </ul>
+        </section>
+        <input type="button" value="Save Record" class="save-record-btn" onclick="submitData()">
+</main>
+    <script>
+        // Function to handle the form submission without a form tag
+        function submitData() {
             // Gather the data from input fields
             const metacount = document.getElementById('metacount').value;
             const currentDate = document.getElementById('hiddenDbDateInput').value;
@@ -217,25 +181,20 @@
             });
         }
 
-    const today = new Date();
-    //const values = {year:'numeric',month:'long',day:'numeric'};
-    //const formattedDate = today.toLocaleDateString('en-US',values);
-    //document.getElementById('currentDate').textContent = formattedDate;
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        // Your existing date code for current date
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const formattedDate = today.toLocaleDateString('en-US', options);
 
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed, so add 1
         const day = String(today.getDate()).padStart(2, '0');
         const formattedDbDate = `${year}-${month}-${day}`;
+
         document.getElementById('currentDate').textContent = formattedDate;
-
         document.getElementById('hiddenDisplayDateInput').value = formattedDate;
-
         document.getElementById('hiddenDbDateInput').value = formattedDbDate;
-
-
-    function calculate(inputValue, resultFieldId) {
+        function calculate(inputValue, resultFieldId) {
             const parsedValue = parseFloat(inputValue);
             if (isNaN(parsedValue)) {
                 document.getElementById(resultFieldId).value = '';
@@ -245,15 +204,14 @@
 
             let result = 0;
             if (resultFieldId === 'result1') {
-                result = (parsedValue * 0.35).toFixed(2);  //fan
+                result = (parsedValue * 0).toFixed(2);  
             } else if (resultFieldId === 'result2') {
-                result = (parsedValue * 0.14).toFixed(2);  //fridge
+                result = (parsedValue * 0.21).toFixed(2);  
             }else if (resultFieldId === 'result3') {
-                result = (parsedValue * 0.14).toFixed(2);  //tv
+                result = (parsedValue * 0.03904).toFixed(2);  
             }else if (resultFieldId === 'result4') {
-                result = (parsedValue *  1).toFixed(2);  //washing machine
-            }else if (resultFieldId === 'result5') {
-                result = (parsedValue *  1.6).toFixed(2);  //other appliances approx
+                result = (parsedValue *  0.17994).toFixed(2);  //car
+            
             } else{
                  result = ""
                 document.getElementById(resultFieldId).value = result;
@@ -276,16 +234,16 @@
             const result2 = parseFloat(document.getElementById('result2').value) || 0;
             const result3 = parseFloat(document.getElementById('result3').value) || 0;
             const result4 = parseFloat(document.getElementById('result4').value) || 0;
-            const result5 = parseFloat(document.getElementById('result5').value) || 0;
+        
            
 
             // Sum all results
-            const totalMetaCount = result1 + result2+result3+result4+result5;
+            const totalMetaCount = result1 + result2+result3+result4;
             document.getElementById('metacount').value = totalMetaCount.toFixed(2);
         }
-</script>
 
-<?php
+    </script>
+    <?php
 
 // Database connection
 $dbhost = "localhost";
@@ -310,7 +268,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if the record for the current date exists
-    $checkQuery = "SELECT appliances_meta_count FROM appliances WHERE Datea = ?";
+    $checkQuery = "SELECT food_meta_count FROM food WHERE Datea = ?";
     $stmt = $conn->prepare($checkQuery);
     $stmt->bind_param("s", $currentDate);
     $stmt->execute();
@@ -319,7 +277,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         // Record exists, fetch the current meta count
         $row = $result->fetch_assoc();
-        $existingMetaCount = floatval($row['appliances_meta_count']);
+        $existingMetaCount = floatval($row['food_meta_count']);
 
         // Only update if the form's metacount differs from the existing one
         if ($metacount != $existingMetaCount) {
@@ -327,7 +285,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $newMetaCount = $existingMetaCount + $metacount;
 
             // Update the record with the new meta count
-            $updateQuery = "UPDATE appliances SET appliances_meta_count = ? WHERE Datea = ?";
+            $updateQuery = "UPDATE food SET food_meta_count = ? WHERE Datea = ?";
             $updateStmt = $conn->prepare($updateQuery);
             $updateStmt->bind_param("ds", $newMetaCount, $currentDate);
 
@@ -341,7 +299,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // Insert new record if it doesn't exist
-        $insertQuery = "INSERT INTO appliances (Datea, appliances_meta_count) VALUES (?, ?)";
+        $insertQuery = "INSERT INTO food (Datea, food_meta_count) VALUES (?, ?)";
         $insertStmt = $conn->prepare($insertQuery);
         $insertStmt->bind_param("sd", $currentDate, $metacount);
 
@@ -354,7 +312,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 mysqli_close($conn);
 ?>
-        
-</body>
 
+</body>
 </html>
